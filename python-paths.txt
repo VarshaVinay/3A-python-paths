@@ -1,0 +1,108 @@
+Terminal commands
+
+1. python
+
+2. python3
+
+3. which python3
+
+4. type python3
+
+5. echo $PATH
+
+/home/welcome/.nvm/versions/node/v18.7.0/bin:
+/home/welcome/.local/bin:
+/usr/local/sbin:
+/usr/local/bin:
+/usr/sbin:/usr/bin:
+/sbin:/bin:
+/usr/games:
+/usr/local/games:
+/snap/bin
+
+Relative vs Absolute paths : https://www.youtube.com/watch?v=sqX6hu7oEew
+	path: address;location
+
+	relative : specify location relative to current directory
+
+	absolute: specify the entire path through directory hierarchy
+		~/home/welcome
+
+export PATH=~/anaconda3/bin:$PATH
+
+echo $PATH
+/home/welcome/anaconda3/bin:
+/home/welcome/anaconda3/condabin:
+/home/welcome/.nvm/versions/node/v18.7.0/bin:
+/home/welcome/.local/bin:
+/usr/local/sbin:/usr/local/bin:
+/usr/sbin:/usr/bin:/sbin:/bin:
+/usr/games:/usr/local/games:
+/snap/bin
+
+	I chose ~/anaconda3/bin/python3 , working
+	If I cd into /home/welcome/.nvm/versions/node/v18.7.0/bin 
+	and then python	here works 
+
+sudo -i
+	asked for password and came to root
+
+	1. Now, manually add a directory to the path
+
+	if we gedit ~/.bashrc 
+	and paste
+	
+	this will reset the entire PATH variable to this one single directory
+	we dont want this to happen
+
+	instead we want to add this directory to our current PATH variable
+	also we want the directory to be seen first before any directory
+	:$PATH" does that.
+	Here is what we got to do
+	gedit ~/.bashrc
+	and paste
+	PATH="/home/welcome/anaconda3/bin:$PATH"
+	export PATH
+
+Q. Which python exectuable are we currently using
+A. 	python
+	import sys
+	sys.executable
+	exit()
+
+	sys module is a build-in module in the standard library
+
+Important Notes: 
+
+we have pip installed a package, but when we try to import the package, 
+it doesnot work. This can also be a path issue . python and pip are two 	separate commands and therefore can be located in two different places.
+So if the path is messed up, it is entirely possible that what we install 		with pip isn't installing that package with the version of python that we 		think it is installing it for.
+ 
+	For example: Let us say we want to install django
+	command : pip install django
+		      pip show django - this will show more details like where is the 				  package installed and so on.
+			  django location from this above command: 
+			  /home/welcome/.local/lib/python3.6/site-packages
+
+	 Now carefully look at the location where the module is installed using sys 
+	 command: python
+		      import sys
+			  sys.executable
+ 	 output: '/usr/bin/python3'
+
+	 Not the same. 
+
+IQ. Command line is using the correct version of python but the editor like sublime text is not. Why?
+A: For sublime text, the executable can be set using build systems, check Sir Corey's idea.
+For me it is VS Code
+
+
+
+
+	
+	
+
+	
+
+
+
